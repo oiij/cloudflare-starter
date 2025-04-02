@@ -1,18 +1,18 @@
 {
-  "name": "ts-starter",
+  "name": "cloudflare-starter",
   "type": "module",
   "version": "0.0.1",
   "description": "",
   "author": "oiij",
   "license": "MIT",
-  "homepage": "https://github.com/oiij/ts-starter",
+  "homepage": "https://github.com/oiij/cloudflare-starter",
   "repository": {
     "type": "git",
-    "url": "git@github.com:oiij/ts-starter.git"
+    "url": "git@github.com:oiij/cloudflare-starter.git"
   },
-  "bugs": "https://github.com/oiij/ts-starter/issues",
+  "bugs": "https://github.com/oiij/cloudflare-starter/issues",
   "keywords": [
-    "ts-starter"
+    "cloudflare-starter"
   ],
   "sideEffects": false,
   "exports": {
@@ -32,10 +32,10 @@
     "package.json"
   ],
   "scripts": {
-    "dev": "tsup --watch",
-    "dev:unbuild": "unbuild --stub",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
     "build": "tsc --noEmit && tsup",
-    "build:unbuild": "tsc --noEmit && unbuild",
+    "cf-typegen": "wrangler types",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepublishOnly": "pnpm build",
@@ -54,6 +54,8 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.2.0",
+    "@cloudflare/vitest-pool-workers": "^0.8.8",
+    "@cloudflare/workers-types": "^4.20250402.0",
     "@oiij/tsconfig": "^0.0.1",
     "@types/node": "^22.13.1",
     "@vitest/ui": "^3.0.5",
@@ -70,7 +72,8 @@
     "tsup": "8.3.6",
     "typescript": "^5.7.3",
     "unbuild": "^3.3.1",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.5",
+    "wrangler": "^4.6.0"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged && pnpm type:check"
